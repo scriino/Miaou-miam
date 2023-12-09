@@ -3,14 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prototype d'Application Web</title>
+    <title>Paramètres d’alimentation</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #fef9ea;
+        }
+
+        /* Style pour les boutons de choix non sélectionnés */
+        button.choix {
+            background-color: #bb9b81; /* Couleur pour les boutons non sélectionnés */
+            color: #fff; /* Couleur du texte pour les boutons non sélectionnés (blanc ici, ajustez si nécessaire) */
+            font-size: 18px;
+            margin: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+
+        /* Style pour les boutons de choix sélectionnés */
+        button.choix.selected {
+            background-color: #ab8262; /* Couleur pour les boutons sélectionnés */
+        }
+
+        /* Style pour les autres boutons de la page */
+        button.autre {
+            background-color: #ab8262; /* Couleur pour les autres boutons */
+            color: #fff; /* Couleur du texte pour les autres boutons (blanc ici, ajustez si nécessaire) */
+            font-size: 18px;
+            margin: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+
+        /* Style pour le logo */
+        #logo {
+            width: 150px; /* Changer la largeur selon vos besoins */
+            height: auto; /* Cette valeur maintient les proportions d'origine */
+            position: absolute;
+            top: 10px; /* Ajustez la valeur en fonction de votre design */
+            left: 10px; /* Ajustez la valeur en fonction de votre design */
         }
 
         button {
@@ -57,7 +95,7 @@
             display: block;
             margin: 20px auto; /* Centrer horizontalement */
             padding: 10px 20px;
-            background-color: #4CAF50;
+            background-color: #ab8262;
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -69,7 +107,7 @@
             display: block;
             margin-left: 10px;
             padding: 10px 20px;
-            background-color: #4CAF50;
+            background-color: #ab8262;
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -84,21 +122,26 @@
 </head>
 <body>
 
-    <h1>Prototype d'Application Web</h1>
+    <h1>Paramètres d’alimentation</h1>
 
-    <button onclick="choix(1)" id="choix1">Choix 1</button>
-    <button onclick="choix(2)" id="choix2">Choix 2</button>
-    <button onclick="choix(3)" id="choix3">Choix 3</button>
-    <button onclick="choix(4)" id="choix4">Choix 4</button>
-    <button onclick="choix(5)" id="choix5">Choix 5</button>
-    <button onclick="choix(6)" id="choix6">Choix 6</button>
+    <!-- Logo -->
+    <img id="logo" src="../image/default2-2-removebg-preview.png" alt="Votre Logo">
 
-    <button onclick="valider()" id="validationButton">Valider</button>
+    <!-- Boutons de choix -->
+    <button onclick="choix(1)" id="choix1" class="choix">10 h</button>
+    <button onclick="choix(2)" id="choix2" class="choix">12 h</button>
+    <button onclick="choix(3)" id="choix3" class="choix">14 h</button>
+    <button onclick="choix(4)" id="choix4" class="choix">16 h</button>
+    <button onclick="choix(5)" id="choix5" class="choix">18 h</button>
+    <button onclick="choix(6)" id="choix6" class="choix">20 h</button>
+
+    <!-- Autres boutons de la page -->
+    <button onclick="valider()" id="validationButton" class="autre">Valider</button>
 
     <div class="definition-input" id="definitionInput">
-        <label for="masseDefinition">Définition de la masse:</label>
+        <label for="masseDefinition">Définition de la masse : </label>
         <input type="number" id="masseDefinition" placeholder="Entrez la définition de la masse" min="0">
-        <button onclick="enregistrerChoix()" id="okButton">OK</button>
+		<button onclick="enregistrerChoix()" id="okButton" class="autre">OK</button>
     </div>
 
     <div id="confirmationMessage">
@@ -109,6 +152,40 @@
     <script>
         var choixSelectionnes = [];
         var boutonValide = false;
+
+		// Appeler la fonction d'initialisation lors du chargement de la page
+		window.onload = function () {
+		    initialiserChoix();
+		};
+
+		// Fonction pour initialiser les libellés des boutons
+		function initialiserChoix() {
+		    for (var i = 1; i <= 6; i++) {
+		        var button = document.getElementById("choix" + i);
+		        switch (i) {
+		            case 1:
+		                button.textContent = "10h";
+		                break;
+		            case 2:
+		                button.textContent = "12h";
+		                break;
+		            case 3:
+		                button.textContent = "14h";
+		                break;
+		            case 4:
+		                button.textContent = "16h";
+		                break;
+		            case 5:
+		                button.textContent = "18h";
+		                break;
+		            case 6:
+		                button.textContent = "20h";
+		                break;
+		            default:
+		                break;
+		        }
+		    }
+		}		
 
         function choix(numero) {
             if (!boutonValide) {
@@ -149,44 +226,44 @@
         }
 
         function enregistrerChoix() {
-    // Récupérer la valeur de la zone de texte
-    var masseDefinition = document.getElementById("masseDefinition").value;
-
-    // Enregistrer les données dans un fichier texte au format "http"
-    var data = {
-        choix: choixSelectionnes,
-        masseDefinition: masseDefinition
-    };
-
-    var queryString = Object.keys(data)
-        .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-        .join('&');
-
-    var httpFrame = 'http://exemple.com?' + queryString;
-
-    // Afficher le message de confirmation avec la valeur
-    var resultatMessage = document.getElementById("resultatMessage");
-    resultatMessage.textContent = "LA MASSE DÉFINIE EST DE " + masseDefinition + " GRAMMES";
-
-    // Afficher le message de confirmation des choix
-    var choixMessage = document.getElementById("choixMessage");
-    choixMessage.textContent = choixSelectionnes.length === 1 ? "VOUS AVEZ FAIT LE CHOIX SUIVANT : " + choixSelectionnes[0] : "VOUS AVEZ FAIT LES CHOIX SUIVANTS : " + choixSelectionnes.join(", ");
-
-    // Afficher le message de confirmation
-    var confirmationMessage = document.getElementById("confirmationMessage");
-    confirmationMessage.style.display = "block";
-    
-    // Désactiver le bouton de validation
-    var validationButton = document.getElementById("validationButton");
-    validationButton.disabled = true;
-
-    // Désactiver le bouton "OK"
-    var okButton = document.getElementById("okButton");
-    okButton.disabled = true;
-
-    // Afficher la trame "http" dans la console (vous pouvez ajuster cela selon vos besoins)
-    console.log('Trame HTTP :', httpFrame);
-}
+		    // Récupérer la valeur de la zone de texte
+		    var masseDefinition = document.getElementById("masseDefinition").value;
+		
+		    // Enregistrer les données dans un fichier texte au format "http"
+		    var data = {
+		        choix: choixSelectionnes,
+		        masseDefinition: masseDefinition
+		    };
+		
+		    var queryString = Object.keys(data)
+		        .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+		        .join('&');
+		
+		    var httpFrame = 'http://exemple.com?' + queryString;
+		
+		    // Afficher le message de confirmation avec la valeur
+		    var resultatMessage = document.getElementById("resultatMessage");
+		    resultatMessage.textContent = "LA MASSE DÉFINIE EST DE " + masseDefinition + " GRAMMES";
+		
+		    // Afficher le message de confirmation des choix
+		    var choixMessage = document.getElementById("choixMessage");
+		    choixMessage.textContent = choixSelectionnes.length === 1 ? "VOUS AVEZ FAIT LE CHOIX SUIVANT : " + choixSelectionnes[0] : "VOUS AVEZ FAIT LES CHOIX SUIVANTS : " + choixSelectionnes.join(", ");
+		
+		    // Afficher le message de confirmation
+		    var confirmationMessage = document.getElementById("confirmationMessage");
+		    confirmationMessage.style.display = "block";
+		    
+		    // Désactiver le bouton de validation
+		    var validationButton = document.getElementById("validationButton");
+		    validationButton.disabled = true;
+		
+		    // Désactiver le bouton "OK"
+		    var okButton = document.getElementById("okButton");
+		    okButton.disabled = true;
+		
+		    // Afficher la trame "http" dans la console (vous pouvez ajuster cela selon vos besoins)
+		    console.log('Trame HTTP :', httpFrame);
+		}
 
 
         function bloquerChoix() {
