@@ -1,73 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Accueil</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Site Web</title>
     <style>
         body {
-            background-color: #ab8262;
             font-family: Arial, sans-serif;
-            text-align: center;
             margin: 0;
             padding: 0;
+            background-color: #f4f4f4;
         }
 
         header {
-            background-color: #fff;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
         }
 
-        h1 {
-            color: #ab8262;
+        section {
+            padding: 2em;
+            text-align: center;
         }
 
-        .content {
-            padding: 20px;
-        }
-
-        /* Couleur du texte secondaire */
-        p {
-            color: #fef9ea;
-        }
-
-        /* Logo cliquable dans le coin supérieur droit */
-        #logo {
-            position: absolute;
-            top: 2px;
-            right: 2px;
-        }
-
-        /* Liens dans le coin supérieur gauche */
-        #top-links {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            text-align: left;
-        }
-
-        /* Désactiver le surlignage des liens */
-        a {
-            text-decoration: none;
-            color: inherit;
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>Ma Page d'Accueil</h1>
-        <a href="/Users/alexandregaillard/Documents/ENSICAEN/PROJET_LIBRE_2023/WEB/web/page_accueil.html"><img src="../../IMAGES/default2-2-removebg-preview.png" alt="Logo"></a>
+        <h1>Mon Site Web</h1>
     </header>
-    <div class="content">
-        <p>Bienvenue sur ma page d'accueil simple et minimaliste.</p>
-        <p>Vous pouvez personnaliser ce contenu comme vous le souhaitez.</p>
-    </div>
-    <div id="top-links">
-        <a href="../web/page_produit.html">Notre produit</a> | 
-        <a href="../web/page_équipe.html">Qui sommes nous?</a> | 
-        <a href="../web/page_contact.html">Contact</a>
-    </div>
+
+    <section>
+        <h2>Bienvenue sur notre site !</h2>
+        <p>Ceci est la page d'accueil de notre site web.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Mon Site Web. Tous droits réservés.</p>
+    </footer>
+
 </body>
 </html>
