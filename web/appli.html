@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paramètres d’alimentation</title>
+    <title>Miaou Miam - Paramètres de distribution</title>
     <style>
 	        body {
             font-family: Arial, sans-serif;
@@ -19,13 +19,6 @@
             padding: 1em;
             position: relative;
         }
-<!--         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            background-color: #fef9ea;
-        } -->
 
         /* Style pour les boutons de choix non sélectionnés */
         button.choix {
@@ -57,14 +50,6 @@
         }
 
         /* Style pour le logo */
-<!--         #logo {
-            width: px; /* Changer la largeur selon vos besoins */
-            height: auto; /* Cette valeur maintient les proportions d'origine */
-            position: absolute;
-            top: 10px; /* Ajustez la valeur en fonction de votre design */
-            left: 10px; /* Ajustez la valeur en fonction de votre design */
-        } -->
-		
 		.logo-container {
             position: absolute;
             top: -10px;
@@ -88,6 +73,12 @@
             border: none;
             border-radius: 5px;
         }
+		
+		/* Ajouter un effet de clic pour les boutons */
+		button:active {
+			transform: translateY(2px);
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}		
 
         .selected {
             background-color: #4CAF50;
@@ -163,13 +154,23 @@
         }
 
         nav a:hover {
-            background-color: #ddd;
+            background-color: #fef9ea;
             color: black;
         }
 		        section {
             padding: 2em;
             text-align: center;
         }
+		
+        section {
+            padding: 2em;
+            text-align: left; /* Aligner le texte vers la gauche */
+			margin-bottom: 40px; /* Ajout de marge inférieure pour éviter le chevauchement avec le footer */						
+        }
+
+        section h2 {
+            text-align: center; /* Centrer le texte à l'intérieur de h2 */
+        }		
 
         footer {
             background-color: #ab8262;
@@ -185,12 +186,13 @@
 </head>
 <body>
     <header>
+		<!-- Logo -->
         <div class="logo-container">
             <a href="../web/page_accueil.html">
                 <img class="logo" src="../image/default2-removebg-preview.png" alt="Logo de Mon Site Web">
             </a>
         </div>
-        <h1>Mon Site Web</h1>
+        <h1>Miaou Miam</h1>
     </header>
 	
 	<nav>
@@ -199,11 +201,9 @@
         <a href="../web/appli.html">Programmation de la gamelle</a>
         <a href="../web/page_contact.html">Contacts</a>
     </nav>
-	
-    <h1>Paramètres d’alimentation</h1>
-	
-    <!-- Logo -->
-    <!-- <img id="logo" src="../image/default2-2-removebg-preview.png" alt="Votre Logo"> -->
+	<section>
+		<h2>Paramètres de distribution</h2>
+	</section>	
 
     <!-- Boutons de choix -->
     <button onclick="choix(1)" id="choix1" class="choix">10 h</button>
@@ -338,6 +338,11 @@
 		    // Désactiver le bouton "OK"
 		    var okButton = document.getElementById("okButton");
 		    okButton.disabled = true;
+			
+			// Réinitialiser l'état du bouton "OK" pour permettre de nouveaux clics
+			setTimeout(function () {
+				okButton.disabled = false;
+			}, 500); // Réactive le bouton après 0,5 seconde (ajustez si nécessaire)
 		
 		    // Afficher la trame "http" dans la console (vous pouvez ajuster cela selon vos besoins)
 		    console.log('Trame HTTP :', httpFrame);
