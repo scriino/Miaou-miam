@@ -1,79 +1,107 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Miaou Miam - Notre produit</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Site Web</title>
     <style>
         body {
-            background-color: #ab8262;
             font-family: Arial, sans-serif;
-            text-align: center;
             margin: 0;
             padding: 0;
+            background-color: #fef9ea;
         }
 
         header {
-            background-color: #fff;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
+            background-color: #ab8262;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: relative;
         }
 
-        h1 {
-            color: #ab8262;
-        }
-
-        h2 {
-            color: #fef9ea;
-			text-align: left;
-        }
-
-        .content {
-            padding: 20px;
-        }
-
-        /* Couleur du texte secondaire */
-        p {
-            color: #fef9ea;
-        }
-
-        /* Logo cliquable dans le coin supérieur droit */
-        #logo {
+		.logo-container {
             position: absolute;
-            top: 2px;
-            right: 2px;
+            top: -10px;
+            left: -200px;
         }
 
-        /* Liens dans le coin supérieur gauche */
-        #top-links {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            text-align: left;
+        .logo-container a {
+            display: block;
         }
 
-        /* Désactiver le surlignage des liens */
-        a {
+        .logo {
+            max-width: 25%;
+            height: auto;
+        }		
+
+        nav {
+            background-color: #bb9b81;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
             text-decoration: none;
-            color: inherit;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        section {
+            padding: 2em;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #ab8262;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>Miaou Miam</h1>
-        <a href="/Users/alexandregaillard/Documents/ENSICAEN/PROJET_LIBRE_2023/WEB/web/page_accueil.html"><img src="/Users/alexandregaillard/Documents/ENSICAEN/PROJET_LIBRE_2023/IMAGES/default2-2-removebg-preview.png" alt="Logo"></a>
+        <div class="logo-container">
+            <a href="../web/page_accueil.html">
+                <img class="logo" src="../image/default2-removebg-preview.png" alt="Logo de Mon Site Web">
+            </a>
+        </div>
+        <h1>Mon Site Web</h1>
     </header>
-    <div class="content">
-		<h2>Nous contacter</h2>
-        <p>Bienvenue sur ma page d'accueil simple et minimaliste.</p>
-        <p>Vous pouvez personnaliser ce contenu comme vous le souhaitez.</p>
-    </div>
-    <div id="top-links">
-        <a href="/Users/alexandregaillard/Documents/ENSICAEN/PROJET_LIBRE_2023/WEB/web/page_produit.html">Notre produit</a> | 
-        <a href="lien-vers-qui-sommes-nous">Qui sommes nous?</a> | 
-        <a href="lien-vers-contact">Contact</a>
-    </div>
+
+    <nav>
+        <a href="../web/page_presentation.html">Qui sommes nous ?</a>
+        <a href="../web/page_produit.html">Notre produit</a>
+        <a href="../web/appli.html">Programmation de la gamelle</a>
+        <a href="../web/page_contact.html">Contacts</a>
+    </nav>
+
+    <section>
+        <h2>Nous contacter</h2>
+        <p>Ceci est la page d'accueil de notre site web.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Mon Site Web. Tous droits réservés.</p>
+    </footer>
+
 </body>
 </html>
+
+
+
+
+
+<!-- ../image/default2-2-removebg-preview.png -->
