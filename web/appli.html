@@ -44,6 +44,13 @@
             background-color: #ab8262; /* Couleur pour les boutons sélectionnés */
         }
 
+        /* Ajouter un effet de clic pour les boutons */
+        button:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+
         /* Style pour les autres boutons de la page */
         button.autre {
             background-color: #ab8262; /* Couleur pour les autres boutons */
@@ -343,17 +350,22 @@
 		    var confirmationMessage = document.getElementById("confirmationMessage");
 		    confirmationMessage.style.display = "block";
 		    
-		    // Désactiver le bouton de validation
-		    var validationButton = document.getElementById("validationButton");
-		    validationButton.disabled = true;
-		
-		    // Désactiver le bouton "OK"
-		    var okButton = document.getElementById("okButton");
-		    okButton.disabled = true;
-		
-		    // Afficher la trame "http" dans la console (vous pouvez ajuster cela selon vos besoins)
-		    console.log('Trame HTTP :', httpFrame);
-		}
+            // Désactiver le bouton de validation
+            var validationButton = document.getElementById("validationButton");
+            validationButton.disabled = true;
+
+            // Désactiver le bouton "OK"
+            var okButton = document.getElementById("okButton");
+            okButton.disabled = true;
+
+            // Réinitialiser l'état du bouton "OK" pour permettre de nouveaux clics
+            setTimeout(function () {
+                okButton.disabled = false;
+            }, 500); // Réactive le bouton après 0,5 seconde (ajustez si nécessaire)
+
+            // Afficher la trame "http" dans la console (vous pouvez ajuster cela selon vos besoins)
+            console.log('Trame HTTP :', httpFrame);
+            }
 
 
         function bloquerChoix() {
